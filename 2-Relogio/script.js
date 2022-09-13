@@ -1,4 +1,14 @@
-//1-Selecionar elementos para manipular.
+/*
+selecionar elementor para manipular
+setar um time para cada um segunto atualizar
+pegar hora minutos e secundos
+adicionado 0 quando for menor que 10
+
+analógico
+calcular angulo dos elementos
+definido a rotaçao de cada elemento
+
+*/
 let elementDigital = document.querySelector('.digital');
 let sElement = document.querySelector('.p_s');
 let mElement = document.querySelector('.p_m');
