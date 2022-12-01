@@ -1,0 +1,117 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
+
+body {
+    background: linear-gradient(236.85deg, #041832 27.26%, #547299 96.03%);
+    font-family: 'Roboto';
+}
+.container {
+     background: #ECF4FF;
+     color: #1c1c1c;
+     margin: 64px;
+     border-radius: 20px;
+     box-shadow:6px 6px 6px #0e1d2f;
+     padding: 64px;
+}
+.perfil {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.imagem_perfil {
+    border-radius: 460px;
+    max-height: 160px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.titulo {
+    margin-left: 16px;
+}
+.tilulo h1 {
+    font-weight: 700;
+    font-size: 36px;
+}
+.tilulo h3 {
+    font-weight: 400;
+    font-size: 24px;
+}
+.main {
+    background-color: #547299;
+    border-radius: 20px;
+    padding: 1rem 0;
+    margin: 30px; 
+}
+.main  li a{
+    list-style: none ;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: black;
+    padding: 5px 30px;
+    line-height: 25px;
+    margin-left: 30px;
+}
+.descricaolink {
+    list-style: none;
+}
+
+main ul {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1c1c1c;
+    margin-left: 30px;
+
+
+}
+.main  li a:hover{
+    background-color: rgb(91, 84, 84);
+    color: white;
+    border-radius: 5px;
+}
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* align-self: flex-end; */
+    margin-top: 5px;
+    /* background-color: #547299; */
+    border-radius: 7px; 
+    font-size: 2rem;  
+    margin-top: 30px; 
+}
+.footer a {
+    text-decoration: none;
+    color: #1c1c1c;
+    font-weight: 600;
+    margin-left: 8px;
+}
+.footer a:hover .fa-brands {
+    background-color: rgb(91, 84, 84);
+    padding: 1rem;
+    color: white;
+    border-radius: 5px;
+
+}
+.fa-github  {
+    color: #547299;
+}
+.fa-linkedin-in {
+    color: #547299;
+
+}
+@media (max-width:600px) {
+    .container {
+        padding: 0.5rem ;
+        margin:0.5rem;
+        margin-bottom: 1rem;
+    }
+    .main{
+        margin: 0.5rem;
+        margin-top: 2rem;
+        /* margin-bottom: 7rem; */
+    }
+    .perfil {
+        margin-top: 3rem;
+    }
+    .footer h3{
+        font-size: 1rem !important;
+    }
+
+}
