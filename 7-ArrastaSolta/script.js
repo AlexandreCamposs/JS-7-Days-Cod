@@ -4,37 +4,97 @@
 //   // e.target.style.border = '1px solid #FF0000'
 // })
 
-document.querySelectorAll('.item').forEach(item =>{
-  item.addEventListener('dragstart',dragStart);
-  item.addEventListener('dragend',dragEnd);
-})
+let areas = {
+  a: null,
+  b: null,
+  c: null,
+};
 
-document.querySelectorAll('.area').forEach(area =>{
+document.querySelectorAll('.item').forEach((item) => {
+  item.addEventListener('dragstart', dragStart);
+  item.addEventListener('dragend', dragEnd);
+});
+
+document.querySelectorAll('.area').forEach((area) => {
   area.addEventListener('dragover', dragOver);
   area.addEventListener('dragleave', dragLeave);
-  area.addEventListener('drop',drop);
-})
+  area.addEventListener('drop', drop);
+});
+
+document
+  .querySelector('.neutralArea')
+  .addEventListener('dragover', dragOverNeutral);
+document
+  .querySelector('.neutralArea')
+  .addEventListener('dragleave', dragLeaveNeutral);
+document.querySelector('.neutralArea').addEventListener('drop', dropNeutral);
 
 // Function item
 
-function dragStart(e){
+function dragStart(e) {
   e.currentTarget.classList.add('dragging');
 }
 
-function dragEnd(e){
-  e.currentTarget.classList.remove('dragging')
+function dragEnd(e) {
+  e.currentTarget.classList.remove('dragging');
 }
 
 //Functions Area
 
-function dragOver(e){
-  e.preventDefault();
-  console.log('Passou por cima!');
+function dragOver(e) {
+  if (e.currentTarget.querySelector('.item') === null) {
+    e.preventDefault();
+    e.currentTarget.classList.add('hover');
+    console.log('Passou por cima!');
+  }
 }
-function dragLeave(e){
-  // console.log('Saiu de área dropavel!');
+function dragLeave(e) {
+  e.currentTarget.classList.remove('hover');
+  console.log('Saiu de área dropavel!');
 }
-function drop(e){
-  console.log('Soltou!')
+function drop(e) {
+  e.currentTarget.classList.remove('hover');
+  console.log('Soltou!');
 
+  if (e.currentTarget.querySelector('.item') === null) {
+    let dragItem = document.querySelector('.item.dragging');
+    e.currentTarget.appendChild(dragItem);
+    updateAreas();
+  }
+}
+
+// Function Nutral Area
+
+function dragOverNeutral(e) {
+  e.preventDefault();
+  e.currentTarget.classList.add('hover');
+}
+function dragLeaveNeutral(e) {
+  e.currentTarget.classList.remove('hover');
+}
+function dropNeutral(e) {
+  e.currentTarget.classList.remove('hover');
+  let dragItem = document.querySelector('.item.dragging');
+  e.currentTarget.appendChild(dragItem);
+  updateAreas();
+
+}
+
+// Logic Function
+
+function updateAreas() {
+  document.querySelectorAll('.area').forEach((area) => {
+    let name = area.getAttribute('data-name');
+    if (area.querySelector('.item') !== null) {
+      areas[name] = area.querySelector('.item').innerHTML;
+    }else{
+      areas[name] = null;
+    }
+  });
+  // console.log(areas);
+  if(areas.a === '1' && areas.b === '2' && areas.c === '3'){
+    document.querySelector('.areas').classList.add('correct');
+  }else{
+    document.querySelector('.areas').classList.remove('correct');
+  }
 }
